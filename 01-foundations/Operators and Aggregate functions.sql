@@ -83,39 +83,3 @@ WHERE
 
 #How many managers do we have in the “employees” database?
 SELECT count(*) FROM dept_manager;
-#The Question: Select all data from the “employees” table, ordering it by “hire date” in descending order.
-SELECT * FROM employees
-ORDER BY hire_date DESC;
-
-#This was a tricky one but we sure showed them:
--- Write a query that obtains an output whose first column must contain annual salaries higher than 80,000 dollars.
--- The second column, renamed to “emps_with_same_salary”, must show the number of employee contracts signed with this salary.
-SELECT salary, COUNT(emp_no) AS emps_with_same_salary
-FROM salaries
-WHERE salary > 80000
-GROUP BY salary
-order by salary;
-
-#QUESTION: Select all employees whose average salary is higher than $120,000 per annum. 
-#Hint: You should obtain 101 records.
-SELECT emp_no, AVG(salary) AS avg_salary
-FROM salaries
-GROUP BY emp_no
-HAVING AVG(salary) > 120000
-ORDER BY avg_salary ASC;
-
-#Comparing our results with that of the lecturers - THEY DONT WORK - this was given to us - I think he was trying to prove a dumb point or something idk.
-SELECT *, AVG(salary)
-FROM salaries
-WHERE
-salary > 120000
-GROUP BY emp_no 
-ORDER BY emp_no;
-
-SELECT
-*, AVG(salary)
-FROM
-salaries
-GROUP BY emp_no
-HAVING AVG(salary) > 120000
-ORDER BY emp_no;
