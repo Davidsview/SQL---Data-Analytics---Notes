@@ -16,7 +16,7 @@ To demonstrate *how I think* when working with SQL: testing, debugging, document
 - SQL (queries, subqueries, procedures, functions)
 
 ## Folder structure
-- `00-key-definitions/`
+- `00-key-definitions/along with screenshots/`
 - `01-foundations/`
 - `02-intermediate/`
 - `03-stored-procedures/`
