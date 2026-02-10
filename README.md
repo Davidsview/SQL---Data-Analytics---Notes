@@ -1,8 +1,8 @@
 # SQL---Data-Analytics---Notes
-Hands-on SQL learning log documenting progression from core querying, subqueries, stored procedures, functions, and MySQL error handling, with explanations focused on understanding why queries work.
+Hands-on Udemy Business Intelligence Analyst course - SQL learning log documenting progression from core querying, subqueries, stored procedures, functions, and MySQL error handling, with explanations focused on understanding why queries work. 
 
 ## What’s inside
-- **Key definitions**: concepts, terminology, and reference notes (updated through Feb 2026)
+- **Key definitions**: concepts, terminology, and reference notes (updated through Dec 2025 - Feb 2026)
 - **Foundations**: early queries, aggregation, GROUP BY mistakes and fixes
 - **Intermediate**: correlated subqueries, derived tables in FROM, UNION patterns
 - **Procedures & functions**: IN/OUT parameters, SELECT ... INTO, deterministic results, common MySQL error handling
