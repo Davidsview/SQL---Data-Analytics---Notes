@@ -21,4 +21,3 @@ To demonstrate *how I think* when working with SQL: testing, debugging, document
 - `02-intermediate/`
 - `03-stored-procedures/`
 - `04-functions/`
-- `screenshots/`
