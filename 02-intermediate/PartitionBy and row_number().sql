@@ -129,3 +129,74 @@ ROW_NUMBER() OVER w AS row_num #another way of writing a windows syntax - this i
 FROM
 employees
 WINDOW w AS (PARTITION BY first_name ORDER BY emp_no); #w is the aliases
+
+#The PARTITION BY Clause vs the GROUP BY Clause - Exercise - 
+-- The partition By Clause is a lot more thorough for example:
+-- We can use the group by clause and the MAX() syntax to generate the highest salary contract of an employee
+-- The Partition By clause can also do it but it's just a lot more syntax faff
+-- So what's the point? Tell'em David:
+-- If we wanted to generate the third highest salary contract an employee has signed we wouldn't be able to use the group by function, the partition by would be the suitable choice.
+
+SELECT 
+a.emp_no,
+a.salary AS max_salary 
+FROM
+(SELECT 
+emp_no,
+salary,
+ROW_NUMBER() OVER w AS row_num
+FROM 
+salaries
+WINDOW w AS (PARTITION BY emp_no ORDER BY salary DESC)) a
+WHERE a.row_num = 1; # Here we're substituting the GROUP BY clause with a WHERE clause,
+-- whose condition will indicate that we want to only retrieve the first records of the partitions.
+-- Technically, this can be specified by referring to the number one rank from the row number column.
+-- In other words, we'll arrange the salary values from highest to lowest in our sub query
+-- and then use a WHERE condition to retrieve the employee's salary ranked as number one.
+#In another example where we were looking for the second highest - all we'd have to do is adjust the a.row_num to = 2
+-- which will give us the second highest salary for each employee
+
+
+#EXERCISE: Find out the lowest salary value each employee has ever signed a contract for.
+-- To obtain the desired output, use a subquery containing a window function,
+--  as well as a window specification introduced with the help of the WINDOW keyword.
+SELECT 
+a.emp_no,
+a.salary AS min_salary 
+FROM
+(SELECT 
+emp_no,
+salary,
+ROW_NUMBER() OVER w AS row_num
+FROM 
+salaries
+WINDOW w AS (PARTITION BY emp_no ORDER BY salary ASC)) a #Ordering salaries by ascending, means the lowest salary will always be row number 1.
+WHERE a.row_num = 1; #Very interesting how the slightest modification can change the entirety of the results.
+
+#Another way of writing the above exercise - can be written interchangebly
+SELECT
+a.emp_no,
+a.salary AS min_salary
+FROM
+(SELECT
+emp_no,
+salary,
+ROW_NUMBER() OVER (PARTITION BY emp_no ORDER BY salary ASC) AS row_num
+FROM salaries) a
+WHERE a.row_num = 1;
+
+SELECT * 
+FROM dept_manager;
+
+SELECT
+a.emp_no,
+a.salary AS min_salary
+FROM
+(SELECT
+dm.emp_no,
+s.salary,
+ROW_NUMBER() OVER (PARTITION BY dm.emp_no ORDER BY s.salary ASC) AS row_num
+FROM salaries s
+JOIN dept_manager dm
+ON s.emp_no = dm.emp_no) a
+WHERE a.row_num = 1; 
