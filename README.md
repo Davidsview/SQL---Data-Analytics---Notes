@@ -4,7 +4,7 @@ Hands-on Udemy Business Intelligence Analyst course - SQL learning log documenti
 ## What’s inside
 - **Key definitions**: concepts, terminology, and reference notes (updated through Dec 2025 - Feb 2026)
 - **Foundations**: early queries, aggregation, GROUP BY mistakes and fixes
-- **Intermediate**: correlated subqueries, derived tables in FROM, UNION patterns
+- **Intermediate**: correlated subqueries, derived tables in FROM, UNION patterns, Case statements, Window Functions (Partition BY and row_number)
 - **Procedures & functions**: IN/OUT parameters, SELECT ... INTO, deterministic results, common MySQL error handling
 - **Screenshots**: Workbench outputs, errors, and UI quirks
 
